@@ -1,0 +1,18 @@
+[package]
+name = "aplay"
+version = "0.1.0"
+authors = ["Grant Handy <grantshandy@gmail.com>"]
+edition = "2018"
+description = "A Command Line Audio Player"
+categories = ["command-line-interface", "command-line-utilities"]
+license = "GPL-3.0"
+repository = "https://github.com/grantshandy/aplay"
+keywords = ["audio", "player", "utility"]
+
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+rodio = "0.13.1"
+clap = "2.33.3"
+colored = "2.0.0"
