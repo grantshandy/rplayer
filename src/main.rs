@@ -6,10 +6,20 @@ use rodio::{Decoder, OutputStream, Sink};
 
 fn main() {
     let matches = app_from_crate!()
-        .arg(Arg::with_name("FILE")
-            .help("Sets the input file to use")
-            .required(true)
-            .index(1))
+        .arg(
+            Arg::with_name("FILE")
+                .help("Sets the input file to play")
+                .required(true)
+                .index(1)
+        )
+        .arg(
+            Arg::with_name("volume")
+                .help("Set volume to play audio at, 1.0 is normal volume.")
+                .long("volume")
+                .short("v")
+                .takes_value(true)
+                .required(false)
+        )
         .get_matches();
 
     let (_stream, stream_handle) = match OutputStream::try_default() {
@@ -54,7 +64,20 @@ fn main() {
     };
     sink.append(source);
 
-    println!("Playing \"{}\"", path.file_name().unwrap().to_string_lossy());
+    match matches.value_of("volume") {
+        Some(data) => {
+            match data.parse::<f32>() {
+                Ok(num) => sink.set_volume(num),
+                Err(_) => {
+                    clap_error("Volume must be a value like \"3.0\" or \"0.45\"");
+                    std::process::exit(1);
+                },
+            }
+        },
+        None => (),
+    };
+
+    println!("Playing \"{}\"...", path.file_name().unwrap().to_string_lossy());
     sink.sleep_until_end();
 }
 
