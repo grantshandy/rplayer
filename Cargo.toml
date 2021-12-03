@@ -1,12 +1,12 @@
 [package]
 name = "rplayer"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Grant Handy <grantshandy@gmail.com>"]
 edition = "2018"
 description = "A Command Line Audio Player"
 categories = ["command-line-interface", "command-line-utilities"]
 license = "GPL-3.0"
-repository = "https://github.com/grantshandy/aplay"
+repository = "https://github.com/grantshandy/rplayer"
 keywords = ["audio", "player", "utility"]
 
 

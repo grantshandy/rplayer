@@ -9,7 +9,7 @@ $ cargo install rplayer
 
 ## Command Line Arguments
 ```
-rplayer 0.1.0
+rplayer 0.1.1
 Grant Handy <grantshandy@gmail.com>
 A Command Line Audio Player
 
